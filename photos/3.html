@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', sans-serif;
+      background: #fff;
+      color: #1a1a1a;
+      min-height: 100vh;
+    }
+    nav {
+      padding: 20px 24px;
+    }
+    nav a {
+      color: #999;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    nav a:hover { color: #1a1a1a; }
+    .photo-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .photo-wrap img {
+      width: 100%;
+      display: block;
+    }
+    .info {
+      max-width: 720px;
+      margin: 32px auto;
+      padding: 0 24px 64px;
+    }
+    .info h1 {
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+    .exif-row {
+      display: flex;
+      gap: 24px;
+      padding: 16px 0;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 20px;
+    }
+    .exif-item {
+      text-align: center;
+    }
+    .exif-val {
+      font-size: 18px;
+      font-weight: 500;
+    }
+    .exif-lbl {
+      font-size: 11px;
+      color: #999;
+      margin-top: 2px;
+    }
+    .device {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 16px;
+    }
+    .notes {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #333;
+      margin-bottom: 16px;
+    }
+    .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tag {
+      background: #f5f5f5;
+      padding: 4px 12px;
+      border-radius: 14px;
+      font-size: 12px;
+      color: #555;
+    }
+    @media (max-width: 640px) {
+      .exif-row { gap: 16px; }
+      .exif-val { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <nav><a href="../index.html">&larr; Back</a></nav>
+  <div class="photo-wrap">
+    <img src="../images/3.jpg" alt="" />
+  </div>
+  <div class="info">
+    
+    <div class="exif-row">
+      <div class="exif-item"><div class="exif-val">f/11</div><div class="exif-lbl">Aperture</div></div>
+      <div class="exif-item"><div class="exif-val">1/60</div><div class="exif-lbl">Shutter</div></div>
+      <div class="exif-item"><div class="exif-val">100</div><div class="exif-lbl">ISO</div></div>
+      <div class="exif-item"><div class="exif-val">50mm</div><div class="exif-lbl">Focal</div></div>
+    </div>
+    <div class="device">NIKON CORPORATION NIKON Z 30 &middot; NIKKOR Z DX 16-50mm f/3.5-6.3 VR</div>
+    
+    
+  </div>
+</body>
+</html>

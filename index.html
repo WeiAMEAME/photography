@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photography</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', sans-serif;
+      background: #fff;
+      color: #1a1a1a;
+    }
+    header {
+      padding: 48px 24px 32px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 28px;
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+    .gallery {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 16px 64px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 12px;
+    }
+    .photo-card {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: #f5f5f5;
+    }
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .photo-card:hover img {
+      transform: scale(1.03);
+    }
+    .card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 12px 16px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.5));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .photo-card:hover .card-overlay {
+      opacity: 1;
+    }
+    .card-exif {
+      color: #fff;
+      font-size: 13px;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+    footer {
+      text-align: center;
+      padding: 32px;
+      font-size: 12px;
+      color: #999;
+    }
+    @media (max-width: 640px) {
+      .gallery {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      header h1 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Photography</h1>
+  </header>
+  <div class="gallery">
+    
+    <a class="photo-card" href="photos/3.html">
+      <img src="images/3_thumb.jpg" alt="" loading="lazy" />
+      <div class="card-overlay">
+        <span class="card-exif">f/11 &middot; 1/60 &middot; ISO 100</span>
+      </div>
+    </a>
+  
+
+    <a class="photo-card" href="photos/2.html">
+      <img src="images/2_thumb.jpg" alt="" loading="lazy" />
+      <div class="card-overlay">
+        <span class="card-exif">f/4.8 &middot; 1/40 &middot; ISO 51200</span>
+      </div>
+    </a>
+  
+
+    <a class="photo-card" href="photos/1.html">
+      <img src="images/1_thumb.jpg" alt="月亮" loading="lazy" />
+      <div class="card-overlay">
+        <span class="card-exif">f/8 &middot; 1/200 &middot; ISO 100</span>
+      </div>
+    </a>
+  
+  </div>
+  <footer>3 photos</footer>
+</body>
+</html>
