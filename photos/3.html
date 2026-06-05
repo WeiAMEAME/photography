@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photo</title>
+  <meta name="description" content="Photo - NIKON Z 30 f/11 1/60 ISO100" />
+  <meta property="og:title" content="Photo" />
+  <meta property="og:description" content="Photo - NIKON Z 30 f/11 1/60 ISO100" />
+  <meta property="og:image" content="../images/3.webp" />
+  <meta property="og:type" content="article" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', sans-serif;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      min-height: 100vh;
+    }
+
+    /* Top nav */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 32px;
+      position: sticky;
+      top: 0;
+      background: rgba(10,10,10,0.9);
+      backdrop-filter: blur(8px);
+      z-index: 50;
+    }
+    .top-nav a {
+      color: #888;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .top-nav a:hover { color: #fff; }
+
+    /* Photo */
+    .photo-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 32px;
+      cursor: zoom-in;
+    }
+    .photo-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+    }
+
+    /* Info */
+    .info {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 32px 60px;
+    }
+    .info h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .date {
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 24px;
+    }
+
+    /* EXIF */
+    .exif-row {
+      display: flex;
+      gap: 0;
+      padding: 20px 0;
+      border-top: 1px solid #222;
+      border-bottom: 1px solid #222;
+      margin-bottom: 24px;
+    }
+    .exif-item {
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+    .exif-item + .exif-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 20%;
+      height: 60%;
+      width: 1px;
+      background: #222;
+    }
+    .exif-val {
+      font-size: 20px;
+      font-weight: 500;
+      color: #fff;
+      font-variant-numeric: tabular-nums;
+    }
+    .exif-lbl {
+      font-size: 11px;
+      color: #666;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Device */
+    .device {
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 20px;
+      padding: 12px 16px;
+      background: #111;
+      border-radius: 8px;
+      display: inline-block;
+    }
+
+    /* Notes */
+    .notes {
+      font-size: 15px;
+      line-height: 1.9;
+      color: #bbb;
+      margin: 20px 0;
+    }
+
+    /* Tags */
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+    .tag {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      padding: 4px 14px;
+      border-radius: 16px;
+      font-size: 12px;
+      color: #888;
+    }
+
+    /* Navigation */
+    .photo-nav {
+      display: flex;
+      justify-content: space-between;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 32px 60px;
+    }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #666;
+      text-decoration: none;
+      font-size: 14px;
+      padding: 10px 16px;
+      border: 1px solid #222;
+      border-radius: 8px;
+      transition: all 0.25s;
+    }
+    .nav-link:hover {
+      color: #fff;
+      border-color: #444;
+      background: #111;
+    }
+    .nav-arrow { font-size: 18px; }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 1000;
+      cursor: zoom-out;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 95vw;
+      max-height: 95vh;
+      object-fit: contain;
+    }
+
+    @media (max-width: 640px) {
+      .top-nav { padding: 16px; }
+      .photo-container { padding: 12px; }
+      .info { padding: 0 16px 40px; }
+      .info h1 { font-size: 22px; }
+      .exif-val { font-size: 16px; }
+      .photo-nav { padding: 0 16px 40px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="top-nav">
+    <a href="../index.html">&larr; 返回画廊</a>
+    
+  </nav>
+
+  <div class="photo-container" id="photoTrigger">
+    <img src="../images/3.webp"
+         srcset="../images/3_md.webp 1000w, ../images/3.webp 1800w"
+         sizes="(max-width: 768px) 100vw, 1400px"
+         width="1800" height="1200"
+         alt="" />
+  </div>
+
+  <div class="info">
+    
+    <p class="date">2026年06月01日</p>
+
+    <div class="exif-row">
+      <div class="exif-item"><div class="exif-val">f/11</div><div class="exif-lbl">光圈</div></div>
+      <div class="exif-item"><div class="exif-val">1/60</div><div class="exif-lbl">快门</div></div>
+      <div class="exif-item"><div class="exif-val">100</div><div class="exif-lbl">ISO</div></div>
+      <div class="exif-item"><div class="exif-val">50mm</div><div class="exif-lbl">焦距</div></div>
+    </div>
+
+    <div class="device">NIKON CORPORATION NIKON Z 30 · NIKKOR Z DX 16-50mm f/3.5-6.3 VR</div>
+    
+    
+  </div>
+
+  <div class="photo-nav">
+    <span></span>
+    <a class="nav-link next" href="2.html"><span class="nav-text">下一张</span><span class="nav-arrow">&rarr;</span></a>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <img src="../images/3.webp" alt="" />
+  </div>
+
+  <script>
+    const trigger = document.getElementById('photoTrigger');
+    const lightbox = document.getElementById('lightbox');
+    trigger.addEventListener('click', () => lightbox.classList.add('active'));
+    lightbox.addEventListener('click', () => lightbox.classList.remove('active'));
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') lightbox.classList.remove('active');
+      
+      if (e.key === 'ArrowRight') window.location.href = '2.html';
+    });
+  </script>
+</body>
+</html>
