@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photography</title>
+  <meta property="og:title" content="Photography" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/3.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', sans-serif;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      padding: 60px 24px 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 400;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    header p {
+      margin-top: 12px;
+      font-size: 14px;
+      color: #666;
+      letter-spacing: 1px;
+    }
+
+    /* Filters */
+    .filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 24px 24px 32px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .filter-btn {
+      background: transparent;
+      border: 1px solid #333;
+      color: #888;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .filter-btn:hover {
+      border-color: #666;
+      color: #ccc;
+    }
+    .filter-btn.active {
+      border-color: #fff;
+      color: #fff;
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* Masonry Gallery */
+    .gallery {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 16px 80px;
+      columns: 3;
+      column-gap: 12px;
+    }
+    .photo-item {
+      break-inside: avoid;
+      margin-bottom: 12px;
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #1a1a1a;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .photo-item.hidden {
+      display: none;
+    }
+    .photo-item a {
+      display: block;
+      text-decoration: none;
+    }
+    .photo-item img {
+      width: 100%;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .photo-item:hover img {
+      transform: scale(1.04);
+    }
+    .photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent 50%, rgba(0,0,0,0.7));
+      opacity: 0;
+      transition: opacity 0.35s;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+    }
+    .photo-item:hover .photo-overlay {
+      opacity: 1;
+    }
+    .photo-meta h3 {
+      color: #fff;
+      font-size: 15px;
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+    .photo-exif {
+      color: rgba(255,255,255,0.7);
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      font-size: 12px;
+      color: #444;
+      border-top: 1px solid #1a1a1a;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .gallery { columns: 2; }
+    }
+    @media (max-width: 640px) {
+      .gallery { columns: 1; column-gap: 8px; }
+      header h1 { font-size: 26px; letter-spacing: 4px; }
+      .filters { padding: 16px 16px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Photography</h1>
+    <p>3 photographs</p>
+  </header>
+  
+    <nav class="filters">
+      <button class="filter-btn active" data-filter="all">全部</button>
+      <button class="filter-btn" data-filter="夜景">夜景</button>
+    </nav>
+  
+  <div class="gallery">
+    
+    <div class="photo-item" data-tags="" style="--ratio: 66.67%">
+      <a href="photos/3.html">
+        <img src="images/3_thumb.jpg" alt="" loading="lazy" />
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            
+            <span class="photo-exif">f/11 · 1/60 · ISO 100</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="photo-item" data-tags="" style="--ratio: 66.67%">
+      <a href="photos/2.html">
+        <img src="images/2_thumb.jpg" alt="" loading="lazy" />
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            
+            <span class="photo-exif">f/4.8 · 1/40 · ISO 51200</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="photo-item" data-tags="夜景" style="--ratio: 66.67%">
+      <a href="photos/1.html">
+        <img src="images/1_thumb.jpg" alt="月亮" loading="lazy" />
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h3>月亮</h3>
+            <span class="photo-exif">f/8 · 1/200 · ISO 100</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <footer>Powered by Camera Config</footer>
+
+  <script>
+    // 标签筛选
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.photo-item').forEach(item => {
+          if (filter === 'all') {
+            item.classList.remove('hidden');
+          } else {
+            const tags = item.dataset.tags;
+            item.classList.toggle('hidden', !tags.includes(filter));
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
